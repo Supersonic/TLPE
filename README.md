@@ -9,7 +9,7 @@ To protect yourself from this issue, make sure to install the Google Play system
 ### Notes on the PoC
 
 - The PoC demonstrates gaining code execution in `system_server` using the vulnerability, logs `id` and stack trace to logcat, and re-installs itself as a `system_server` component.
-- Once the PoC is installed, tapping the Go button or a call being placed through the telecom stack will trigger it.
+- Once the PoC is installed, tapping the Start Exploit button or a call being placed through the telecom stack will trigger it.
 - Compile the PoC by running the included `build.sh`. Otherwise, you can manually run `./gradlew assembleSystemRelease`, move the resulting `app-system-release.apk` to `app/src/poc/assets/system.apk`, and then run `./gradlew assemblePocRelease`.
 - The PoC will register its own certificate as an ancestor certificate for UID 1000 after successful exploitation. **This state persists through OTAs including the patch of the vulnerability itself.** To clean up your device after a PoC run, you should press the "Uninstall" button in the PoC (which cleans up the injected certificate) - nonetheless, I highly recommend using your own release keystore to sign a compiled PoC APK during testing. (rather than the one the PoC uses by default at TLPE/app/teststore.jks)
 - Note that the PoC after getting into `system_server` **also forces off Play Protect** by setting `package_verifier_user_consent` to `-1` in `Settings.Global` because it can sometimes intercept the re-install transaction due to unknown signatures. You should re-enable this in Settings after testing.
