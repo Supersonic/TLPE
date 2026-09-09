@@ -6,6 +6,8 @@ At the time of reporting, it only actively affected Pixel builds on and after An
 
 To protect yourself from this issue, make sure to install the Google Play system update as well as the system security patch. (Telecom is a mainline component since Android 17)
 
+<img width="1080" height="2424" alt="TLPE" src="https://github.com/user-attachments/assets/e5375b77-9290-4e89-8f35-b72eaf667716" />
+
 ### Notes on the PoC
 
 - The PoC demonstrates gaining code execution in `system_server` using the vulnerability, logs `id` and stack trace to logcat, and re-installs itself as a `system_server` component.
